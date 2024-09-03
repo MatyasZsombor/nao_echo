@@ -2,11 +2,13 @@ import socket
 import threading
 
 
+HOST = "10.0.0.61"
+PORT = 8000
+
+
 def main():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host = "10.0.0.149"
-    port = 80
-    client_socket.connect((host, port))
+    client_socket.connect((HOST, PORT))
 
     first = True
     while True:

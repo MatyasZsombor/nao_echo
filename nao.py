@@ -1,8 +1,11 @@
 import socket
 
+HOST = "10.0.0.69"
+PORT = 8000
+
 
 class MyClass(GeneratedClass):
-    def handle_client(client_socket):
+    def handle_client(self, client_socket):
         while True:
             data = client_socket.recv(1024)
             if not data:
@@ -46,9 +49,7 @@ class MyClass(GeneratedClass):
 
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-        host = "10.0.0.149"
-        port = 80
-        server_socket.bind((host, port))
+        server_socket.bind((HOST, PORT))
         server_socket.listen(5)
 
         self.tts = ALProxy("ALTextToSpeech")
@@ -58,7 +59,7 @@ class MyClass(GeneratedClass):
         while True:
             client_socket, client_address = server_socket.accept()
             print("Accepted connection from")
-            handle_client(client_socket)
+            self.handle_client(client_socket)
 
     def onLoad(self):
         # put initialization code here
